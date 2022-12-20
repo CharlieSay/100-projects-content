@@ -1,0 +1,57 @@
+---
+title: Pokemon Rest API
+tags: java, micro-service, backend
+description: Simple RESTful API that will allow either all Pokemon OR By Generation.
+expertise: beginner
+---
+
+Much like PokeAPI, have an endpoint (doesn't matter what framework IF any you use) return a set of pokemon.
+
+bunch of pokemon to use:
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Bulbasaur",
+    "type": ["Grass", "Poison"],
+    "gen": 1
+  },
+  {
+    "id": 2,
+    "name": "Squirtle",
+    "type": ["Water"],
+    "gen": 1
+  },
+  {
+    "id": 3,
+    "name": "Charmander",
+    "type": ["Fire"],
+    "gen": 1
+  }
+]
+```
+
+<h1>Create a Pokémon REST API</h1>
+<h2>Requirements</h2>
+<ul>
+  <li>
+    A database of Pokémon with their names, types, and other relevant attributes
+  </li>
+  <li>
+    Routes for retrieving a list of Pokémon, a single Pokémon by ID, and Pokémon
+    by type
+  </li>
+  <li>A way to add, update, and delete Pokémon from the database</li>
+</ul>
+<h2>Bonus</h2>
+<ul>
+  <li>
+    Can you add authentication and authorization to the API, so that only
+    authorized users can make certain types of requests?
+  </li>
+  <li>
+    Can you add support for pagination and filtering to the list of Pokémon
+    route?
+  </li>
+</ul>
