@@ -29,3 +29,23 @@ As a Pokémon trainer, it's important to know all about the different species of
     view a separate list of favorites?
   </li>
 </ul>
+
+```python
+# Import necessary libraries
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+
+# Load and preprocess the data
+X = ...
+y = ...
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Create and fit the model
+model = RandomForestClassifier()
+model.fit(X_train, y_train)
+
+# Evaluate the model
+accuracy = model.score(X_test, y_test)
+print(f"Model accuracy: {accuracy:.2f}")
+
+```
