@@ -43,24 +43,24 @@ A search engine is a powerful tool that allows users to quickly find relevant in
 Here is some sample code to get you started with a basic web crawler using JSoup:
 
 </p>
+
 ```java
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+
 public class WebCrawler {
-public static void main(String[] args) {
-try {
-// retrieve web page
-Document doc = Jsoup.connect("https://www.example.com").get();
-// print page content
-System.out.println(doc.toString());
-} catch (IOException e) {
-e.printStackTrace();
-}
-}
-}
 
-```
-
+  public static void main(String[] args) {
+    try {
+      // retrieve web page
+      Document doc = Jsoup.connect("https://www.example.com").get();
+      // print page content
+      System.out.println(doc.toString());
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+}
 ```
 
 <p>

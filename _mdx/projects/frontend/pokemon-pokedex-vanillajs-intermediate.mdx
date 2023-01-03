@@ -1,51 +1,68 @@
 ---
-title: Pokémon Pokedex
+title: Pokemon Pokedex shower (Intermediate)
 tags: javascript, react, redux
 description: a simple Pokémon Pokedex application using React and Redux
 expertise: intermediate
 thumbId: dPKv2iI5ChU
 ---
 
-As a Pokémon trainer, it's important to know all about the different species of Pokémon that exist in the world. With a Pokedex, you can easily look up information about any Pokémon you encounter on your journey.
+In this project, we will be building a Pokemon Pokedex application using React and Redux, and accessing data from the PokeAPI at https://pokeapi.co/. The application will allow users to browse and search for Pokemon, view their details, and save their favorites.
 
-<h1>Create a Pokémon Pokedex</h1>
-<h2>Requirements</h2>
-<ul>
-  <li>A list of Pokémon with their names and images</li>
-  <li>A way to search for a specific Pokémon by name</li>
-  <li>
-    A way to view detailed information about a selected Pokémon (e.g. type,
-    abilities, moves, etc.)
-  </li>
-</ul>
-<h2>Bonus</h2>
+<h1>Project Checklist</h1>
 <ul>
   <li>
-    Can you add a feature that allows users to filter the Pokémon list by type
-    or generation?
+    Design and implement a Pokemon Pokedex application using React, Redux, and
+    the PokeAPI
   </li>
   <li>
-    Can you add a feature that allows users to mark their favorite Pokémon and
-    view a separate list of favorites?
+    Create a system for browsing and searching for Pokemon, viewing their
+    details, and saving favorites
+  </li>
+  <li>Test and debug the application using sample data</li>
+</ul>
+<h2>Bonus Project Checklist Items</h2>
+<ul>
+  <li>Implement pagination for the Pokemon list</li>
+  <li>Allow for custom pagination limits</li>
+  <li>
+    Add additional customization options, such as changing the appearance or
+    adding sound effects
   </li>
 </ul>
+<h2>Inspiration (Any companies/libraries similar)</h2>
+<ul>
+  <li>Pokemon API</li>
+  <li>Pokeapi.co</li>
+  <li>Pokedex</li>
+</ul>
+<h2>Hint/Code snippet to start</h2>
+To get started, you can use the following code snippet to set up a basic React application
+with Redux and a Pokeapi client:
 
-```python
-# Import necessary libraries
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import train_test_split
+```javascript
+import React from 'react'
+import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
+import reducer from './reducer'
+import PokeapiClient from './PokeapiClient'
 
-# Load and preprocess the data
-X = ...
-y = ...
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+// Create the Redux store with the thunk middleware
+const store = createStore(reducer, applyMiddleware(thunk))
 
-# Create and fit the model
-model = RandomForestClassifier()
-model.fit(X_train, y_train)
+// Set up the Pokeapi client
+const client = new PokeapiClient()
 
-# Evaluate the model
-accuracy = model.score(X_test, y_test)
-print(f"Model accuracy: {accuracy:.2f}")
+// Create the root component for the application
+function App() {
+  return (
+    <Provider store={store}>
+      {/* Add your application components here */}
+    </Provider>
+  )
+}
 
+export default App
 ```
+
+This code sets up a basic React application with a Redux store and the thunk middleware for handling async actions. It also includes a Pokeapi client for accessing data from the PokeAPI. You can then add your application components and implement the desired functionality.
