@@ -7,7 +7,7 @@ Base
 title: Title of Project
 tags: 3 tags comma seperated
 description: small description max 100 characters
-expertise: easy, moderate or advanced
+expertise: easy, intermediate or advanced
 thumbId: thumbnail id from unsplash
 ---
 
