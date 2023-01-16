@@ -1,9 +1,9 @@
 ---
 title: Weather App
-tags: mobile development, weather, API
+tags: mobile, weather, swift, android
 description: An app that displays current weather and forecast for user's location
 expertise: intermediate
-thumbId:
+thumbId: BqKdvJ8a5TI
 ---
 
 In this project, we will be creating a weather app that displays the current temperature and forecast for a user's location. The app will use the device's GPS to determine the user's location and display the current weather conditions, as well as a forecast for the next several days. The app will also include additional features such as displaying the current time and date, and the ability to switch between Fahrenheit and Celsius.
@@ -112,7 +112,9 @@ String weatherApiUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + 
         }
         });
     }
+
 }
+
 ```
 
 <h2>iOS/Swift Starter</h2>
@@ -153,11 +155,11 @@ let weatherApiUrl = "https://api.openweathermap.org/data/2.5/weather?lat=\(latit
     AF.request(weatherApiUrl).responseDecodable(of: WeatherData.self) { [weak self] (response) in
         guard let self = self else { return }
         switch response.result {
-        case .success(let weatherData):
+        case.success(let weatherData):
             // Update the temperature and forecast label with the data from the API
             self.temperatureLabel.text = weatherData.temperature
             self.forecastLabel.text = weatherData.forecast
-        case .failure(let error):
+        case.failure(let error):
             // Handle error
             print(error)
         }

@@ -5,10 +5,10 @@ Base
 <!--
 ---
 title: Title of Project
-tags: 3 tags comma seperated
+tags: maximum 3 tags comma seperated
 description: small description max 100 characters
 expertise: easy, intermediate or advanced
-thumbId: thumbnail id from unsplash
+thumbId: thumbnaidId from Unsplash Photos
 ---
 
 A longer description here
