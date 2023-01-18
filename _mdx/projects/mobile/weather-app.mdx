@@ -41,50 +41,49 @@ To get started, you can use the following code snippets to set up the basic stru
 of the app for Android and iOS platforms:
 
 <h2>Android Starter</h2>
+
 ```java
+
 public class MainActivity extends AppCompatActivity {
     private TextView temperatureTextView;
-private TextView forecastTextView;
-private Button refreshButton;
+    private TextView forecastTextView;
+    private Button refreshButton;
 
-@Override
-protected void onCreate(Bundle savedInstanceState) {
-super.onCreate(savedInstanceState);
-setContentView(R.layout.activity_main);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
 
-    temperatureTextView = findViewById(R.id.temperature_text_view);
-    forecastTextView = findViewById(R.id.forecast_text_view);
-    refreshButton = findViewById(R.id.refresh_button);
+        temperatureTextView = findViewById(R.id.temperature_text_view);
+        forecastTextView = findViewById(R.id.forecast_text_view);
+        refreshButton = findViewById(R.id.refresh_button);
 
-    refreshButton.setOnClickListener(new View.OnClickListener() {
+        refreshButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Get user's location and fetch weather data
+                getLocationAndFetchWeather();
+            }
+        });
+    }
+
+    private void getLocationAndFetchWeather() {
+    // Use the device's GPS to get user's location
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        LocationListener locationListener = new LocationListener() {
         @Override
-        public void onClick(View view) {
-            // Get user's location and fetch weather data
-            getLocationAndFetchWeather();
+        public void onLocationChanged(Location location) {
+        // Fetch weather data using the location coordinates
+            fetchWeatherData(location.getLatitude(), location.getLongitude());
         }
-    });
-
-}
-
-private void getLocationAndFetchWeather() {
-// Use the device's GPS to get user's location
-LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-LocationListener locationListener = new LocationListener() {
-@Override
-public void onLocationChanged(Location location) {
-// Fetch weather data using the location coordinates
-fetchWeatherData(location.getLatitude(), location.getLongitude());
-}
-
-        // Other required methods for LocationListener
     };
     locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, locationListener);
 
 }
 
-private void fetchWeatherData(double latitude, double longitude) {
-// Use a weather API to fetch the current weather data using the location coordinates
-String weatherApiUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&appid=YOUR_API_KEY";
+    private void fetchWeatherData(double latitude, double longitude) {
+    // Use a weather API to fetch the current weather data using the location coordinates
+    String weatherApiUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&appid=YOUR_API_KEY";
 
     // Use a library such as Retrofit to make the API call
     Retrofit retrofit = new Retrofit.Builder()
@@ -118,7 +117,9 @@ String weatherApiUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + 
 ```
 
 <h2>iOS/Swift Starter</h2>
+
 ```swift
+
 class MainViewController: UIViewController {
 
     @IBOutlet weak var temperatureLabel: UILabel!
@@ -140,32 +141,33 @@ class MainViewController: UIViewController {
             }
         }
 
-extension MainViewController: CLLocationManagerDelegate {
+    extension MainViewController: CLLocationManagerDelegate {
         func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
             guard let location = locations.last else { return }
             fetchWeatherData(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             }
     }
 
-extension MainViewController {
-private func fetchWeatherData(latitude: Double, longitude: Double) {
-// Use a weather API to fetch the current weather data using the location coordinates
-let weatherApiUrl = "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&appid=YOUR_API_KEY"
-    // Use a library such as Alamofire to make the API call
-    AF.request(weatherApiUrl).responseDecodable(of: WeatherData.self) { [weak self] (response) in
-        guard let self = self else { return }
-        switch response.result {
-        case.success(let weatherData):
-            // Update the temperature and forecast label with the data from the API
-            self.temperatureLabel.text = weatherData.temperature
-            self.forecastLabel.text = weatherData.forecast
-        case.failure(let error):
-            // Handle error
-            print(error)
+    extension MainViewController {
+    private func fetchWeatherData(latitude: Double, longitude: Double) {
+    // Use a weather API to fetch the current weather data using the location coordinates
+    let weatherApiUrl = "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&appid=YOUR_API_KEY"
+        // Use a library such as Alamofire to make the API call
+        AF.request(weatherApiUrl).responseDecodable(of: WeatherData.self) { [weak self] (response) in
+            guard let self = self else { return }
+            switch response.result {
+            case.success(let weatherData):
+                // Update the temperature and forecast label with the data from the API
+                self.temperatureLabel.text = weatherData.temperature
+                self.forecastLabel.text = weatherData.forecast
+            case.failure(let error):
+                // Handle error
+                print(error)
+            }
         }
     }
 }
-}
+
 ```
 
 This is just a basic example, you can expand on it with additional functionality and features as needed. Also, you can use other weather API like DarkSky API, OpenWeather API, etc.
