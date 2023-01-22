@@ -19,7 +19,7 @@ title: Title of Project
 tags: maximum 4 tags comma seperated
 description: small description max 100 characters
 expertise: easy, intermediate or advanced
-thumbId: thumbnaidId from Unsplash Photos
+thumbId: thumbnailId from Unsplash Photos
 ---
 
 A longer description here
