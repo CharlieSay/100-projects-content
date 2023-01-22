@@ -33,6 +33,7 @@ Users will be able to view the top headlines from a selection of news sources, f
 <li>BBC News</li>
 </ul>
 <h2>Hint/Code snippet to start</h2>
+
 ```javascript
 // Example code for fetching news headlines using Node.js and Express
 app.get('/headlines', (req, res) => {
@@ -42,4 +43,5 @@ app.get('/headlines', (req, res) => {
         .catch(err => res.status(400).json(err))
 });
 ```
+
 This code snippet is an example of how to use the GET method to fetch news headlines using category and keyword as parameters, and an API key, and then returning the data in JSON format.

@@ -49,6 +49,6 @@ app.post('/calculate', (req, res) => {
         .then(footprint => res.json(footprint))
         .catch(err => res.status(400).json(err))
 });
-
 ```
+
 This code snippet is an example of how to use the POST method to calculate the carbon footprint based on transportation and activities data, and saving the carbon footprint in the database.

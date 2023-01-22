@@ -32,22 +32,24 @@ Users will be able to create and manage their own online courses, including crea
 <li>edX.org</li>
 </ul>
 <h2>Hint/Code snippet to start</h2>
+
 ```javascript
 // Example code for creating a new course using Node.js, Express and Mongoose
-const express = require('express');
-const router = express.Router();
-const Course = require('../models/Course');
+const express = require('express')
+const router = express.Router()
+const Course = require('../models/Course')
 router.post('/create', (req, res) => {
-const { title, description, modules } = req.body;
-const newCourse = new Course({
-title,
-description,
-modules,
-});
-newCourse.save()
-.then(course => res.json(course))
-.catch(err => res.status(400).json(err))
-});
+  const { title, description, modules } = req.body
+  const newCourse = new Course({
+    title,
+    description,
+    modules,
+  })
+  newCourse
+    .save()
+    .then((course) => res.json(course))
+    .catch((err) => res.status(400).json(err))
+})
 ```
 
 This code snippet is an example of how to use the POST method to create a new course using the title, description and modules as parameters, and save it in the database using Mongoose.
