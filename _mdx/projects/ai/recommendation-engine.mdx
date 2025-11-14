@@ -1,38 +1,53 @@
 ---
 title: Recommendation Engine
-tags: machine learning, recommendation, python
-description: a simple recommendation engine using a machine learning library and a database
+tags: ai, machine-learning, recommendations, python, collaborative-filtering
+description: Build a recommendation system that suggests products, movies, or content based on user preferences
 expertise: intermediate
-thumbId: npxXWgQ33ZQ
+thumbId: fOwb7GrCg5I
 ---
 
-A recommendation engine suggests products or content to users based on their previous interactions using a machine learning library and a database. In this project, you will create a basic recommendation engine.
+Create a recommendation engine using collaborative filtering or content-based filtering to suggest relevant items to users.
 
-<h1>Create a Basic Recommendation Engine</h1>
-<h2>Requirements</h2>
+<h1>Project Checklist</h1>
 <ul>
-  <li>A way to collect user interaction data (e.g. clicks, purchases, etc.)</li>
-  <li>
-    A way to use the collected data to train a recommendation model using a
-    machine learning library
-  </li>
-  <li>
-    A way to use the trained model to suggest products or content to users
-  </li>
+  <li>Collect user interaction data (ratings, views, purchases)</li>
+  <li>Implement collaborative filtering algorithm</li>
+  <li>Build content-based filtering as alternative</li>
+  <li>Create hybrid recommendation system</li>
+  <li>Evaluate recommendation quality with metrics</li>
+  <li>Build API to serve recommendations</li>
 </ul>
-<h2>Bonus</h2>
+<h2>Bonus Project Checklist Items</h2>
 <ul>
-  <li>
-    Can you add a feature that allows users to provide explicit feedback (e.g.
-    thumbs up/down) to improve the recommendations?
-  </li>
-  <li>
-    Can you add a feature that allows users to specify preferences or
-    constraints (e.g. price range, category) to narrow down the recommendations?
-  </li>
+  <li>Implement matrix factorization for better accuracy</li>
+  <li>Add real-time recommendation updates</li>
+  <li>Create explanation system (why items are recommended)</li>
+  <li>Implement A/B testing for recommendation algorithms</li>
+  <li>Add diversity metrics to avoid filter bubbles</li>
+  <li>Create cold-start solutions for new users/items</li>
 </ul>
-<h2>Hint</h2>
-<p>
-  You can use a machine learning library like scikit-learn or TensorFlow to
-  implement the recommendation model for this project.
-</p>
+<h2>Inspiration (Any companies/libraries similar)</h2>
+<ul>
+  <li>Netflix recommendations</li>
+  <li>Amazon product recommendations</li>
+  <li>Spotify Discover Weekly</li>
+</ul>
+<h2>Hint/Code snippet to start</h2>
+```python
+from sklearn.metrics.pairwise import cosine_similarity
+import numpy as np
+
+def collaborative_filter(user_id, user_item_matrix):
+    # Calculate user similarity
+    user_similarities = cosine_similarity(user_item_matrix)
+    similar_users = user_similarities[user_id].argsort()[-10:][::-1]
+    
+    # Generate recommendations
+    recommendations = {}
+    for similar_user in similar_users:
+        for item_id, rating in enumerate(user_item_matrix[similar_user]):
+            if user_item_matrix[user_id][item_id] == 0 and rating > 0:
+                recommendations[item_id] = recommendations.get(item_id, 0) + rating
+    
+    return sorted(recommendations.items(), key=lambda x: x[1], reverse=True)[:10]
+```
